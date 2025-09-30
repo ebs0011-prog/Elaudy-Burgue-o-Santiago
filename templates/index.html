@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias</title>
+    <!-- Bootstrap CDN minificado -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Últimas Noticias</h1>
+
+    <!-- Formulario de búsqueda y filtro -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-6">
+            <input type="text" name="buscar" class="form-control" placeholder="Buscar título..." value="{{ buscar }}">
+        </div>
+        <div class="col-md-4">
+            <select name="autor" class="form-select">
+                <option value="">Todos los autores</option>
+                {% for a in autores %}
+                <option value="{{ a }}" {% if a == autor %}selected{% endif %}>{{ a }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </form>
+
+    <!-- Tabla de noticias -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Enlace</th>
+                <th>Fecha</th>
+                <th>Autor/Sección</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for n in noticias %}
+            <tr>
+                <td>{{ n[0] }}</td>
+                <td><a href="{{ n[1] }}" target="_blank">{{ n[1] }}</a></td>
+                <td>{{ n[2] }}</td>
+                <td>{{ n[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
