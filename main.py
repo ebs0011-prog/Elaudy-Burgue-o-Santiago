@@ -15,7 +15,7 @@ print(soup.title.text)
 
 titulares = soup.find_all("h2")
 
-for t in titulares[:5]:
+for t in titulares[:10]:
     print(t.text.strip())
 
 #esto es un corte 
@@ -31,7 +31,7 @@ with open("titulares.html", "w", encoding="utf-8") as f:
     f.write("<body>\n")
     f.write("    <h1>Últimos titulares</h1>\n")
 
-    for t in titulares [:5]:
+    for t in titulares [:10]:
         f.write(f"        <li>{t.text.strip()}</li>\n")
         f.write("    </ol>\n")  
 
