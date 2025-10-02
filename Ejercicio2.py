@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import sqlite3
 import re
 
-# URL de El País
+
 url = "https://elpais.com/"
 respuesta = requests.get(url)
 print("Estado:", respuesta.status_code)
